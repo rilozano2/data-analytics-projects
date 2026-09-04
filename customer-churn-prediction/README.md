@@ -18,9 +18,15 @@ Three classification models were built and compared:
 ## Key Finding
 Contract length is the dominant churn driver: month-to-month customers have roughly **20-23x higher odds of churning** than customers on one- or two-year contracts (logistic regression coefficients of -3.02 and -3.14 respectively, converted to odds ratios). Tenure and monthly charge are secondary but still meaningful predictors.
 
+## Visualizations
+
+![Decision Tree](./decision_tree.png)
+
+![Confusion Matrix](./confusion_matrix.png)
+
 ## Files
 - `logistic_regression.py` — data prep, initial model, RFE-based feature selection, reduced model
-- `decision_tree.py` — data prep, decision tree fit, accuracy/MSE, feature importances
+- `decision_tree.py` — data prep, decision tree fit, accuracy/MSE, feature importances, visualizations
 
 ## Recommendation
 Prioritize retention offers (contract incentives, loyalty pricing) for month-to-month, short-tenure, high-monthly-charge customers, the segment the models consistently flag as highest risk.

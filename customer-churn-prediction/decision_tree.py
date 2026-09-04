@@ -43,3 +43,24 @@ print("Confusion matrix:\n", confusion_matrix(y_test, y_pred))
 
 importances = pd.DataFrame({'Feature': X.columns, 'Importance': dt_model.feature_importances_})
 print("\nFeature importances:\n", importances.sort_values('Importance', ascending=False))
+
+# Visualizations
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.tree import plot_tree
+
+plt.figure(figsize=(20, 10))
+plot_tree(dt_model, feature_names=X.columns, class_names=['No', 'Yes'], filled=True, impurity=True, rounded=True)
+plt.title("Decision Tree for Churn Prediction")
+plt.savefig('decision_tree.png', dpi=150, bbox_inches='tight')
+plt.close()
+
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['No', 'Yes'], yticklabels=['No', 'Yes'])
+plt.title('Confusion Matrix, Decision Tree')
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.savefig('confusion_matrix.png', dpi=150, bbox_inches='tight')
+plt.close()
+print("\nSaved decision_tree.png and confusion_matrix.png")

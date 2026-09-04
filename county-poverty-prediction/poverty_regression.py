@@ -33,3 +33,18 @@ preds = model2.predict(X_test_sm)
 print("\nRefit R^2 (train):", model2.rsquared)
 print("Refit Test R^2:", r2_score(y_test, preds))
 print("\nUnemployment coefficient (refit):", model2.params['Unemployment'])
+
+# Visualization: actual vs predicted poverty rate
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 8))
+plt.scatter(y_test, preds, alpha=0.4, s=15)
+lims = [min(y_test.min(), preds.min()), max(y_test.max(), preds.max())]
+plt.plot(lims, lims, 'r--', linewidth=1)
+plt.xlabel('Actual Poverty Rate (%)')
+plt.ylabel('Predicted Poverty Rate (%)')
+plt.title(f'Actual vs Predicted County Poverty Rate (R² = {r2_score(y_test, preds):.2f})')
+plt.tight_layout()
+plt.savefig('actual_vs_predicted.png', dpi=150, bbox_inches='tight')
+plt.close()
+print("Saved actual_vs_predicted.png")

@@ -18,5 +18,9 @@ Unemployment rate is the single strongest predictor of poverty, holding other fa
 ## Limitation
 Employment-sector and commute-mode variables are compositional (they sum to ~100% by construction), so some residual multicollinearity remains even after removing the most redundant variable, most notably in the `Drive` feature. This doesn't affect the model's overall predictive power (R²), but individual coefficients for the remaining collinear features should be read with that caveat.
 
+## Visualization
+
+![Actual vs Predicted Poverty Rate](./actual_vs_predicted.png)
+
 ## Files
-- `poverty_regression.py` — data load, correlation check, OLS regression, VIF diagnostic, refit
+- `poverty_regression.py` — data load, correlation check, OLS regression, VIF diagnostic, refit, visualization
